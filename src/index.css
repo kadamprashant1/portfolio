@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #00f0ff;
+}
+
+:root {
+  --color-bg: #050914; /* Deep Navy / Near-Black */
+  --color-accent: #00f0ff; /* Neon Cyan */
+  --color-accent-glow: rgba(0, 240, 255, 0.5);
+  --color-text-main: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-terminal-bg: rgba(5, 9, 20, 0.85);
+  --color-terminal-border: rgba(0, 240, 255, 0.3);
+  
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Utilities */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* Sci-fi Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Custom Scrollbar for fallback/modals */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-terminal-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Glow effects */
+.glow-text {
+  text-shadow: 0 0 10px var(--color-accent-glow);
+}
+.glow-border {
+  box-shadow: 0 0 15px var(--color-accent-glow);
+}
+
+/* App Container */
+#root {
+  width: 100vw;
+  min-height: 100vh;
+}
