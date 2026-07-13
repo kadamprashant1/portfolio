@@ -1,0 +1,35 @@
+name: Build and Deploy
+
+# Trigger the workflow when code is pushed to main or when manually started
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        # This step checks out your repo so actions can access the source files.
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+        # Installs Node.js and enables npm dependency caching.
+
+      - name: Install dependencies
+        run: npm ci
+        # Installs exact dependency tree from package-lock.json.
+
+      - name: Build production bundle
+        run: npm run build
+        # Runs Vite build and creates the optimized dist folder.
+
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
